@@ -1,0 +1,66 @@
+{
+  "name": "@obsidianlabs/motherduck-pages-proxy",
+  "version": "0.0.0",
+  "description": "Server-side MotherDuck query proxy + React client for Cloudflare Pages/Workers. SELECT-only validator, BigInt-safe JSON, pluggable auth & rate-limit.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Firelord710/motherduck-pages-proxy.git"
+  },
+  "homepage": "https://github.com/Firelord710/motherduck-pages-proxy#readme",
+  "bugs": "https://github.com/Firelord710/motherduck-pages-proxy/issues",
+  "keywords": [
+    "motherduck",
+    "duckdb",
+    "cloudflare",
+    "cloudflare-pages",
+    "cloudflare-workers",
+    "query-proxy",
+    "sql-proxy",
+    "select-only"
+  ],
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
+    },
+    "./validator": {
+      "types": "./dist/validator/index.d.ts",
+      "import": "./dist/validator/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "node tests/unit/security.test.mjs && node tests/unit/valid.test.mjs && node tests/unit/json.test.mjs && node tests/unit/edge.test.mjs",
+    "test:integration": "node --test tests/integration/handler.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "peerDependencies": {
+    "pg": "^8.13.0",
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-dom": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "pg": "^8.13.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0"
+  }
+}
