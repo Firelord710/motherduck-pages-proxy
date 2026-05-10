@@ -1,6 +1,6 @@
 {
   "name": "@obsidianlabs/motherduck-pages-proxy",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Server-side MotherDuck query proxy + React client for Cloudflare Pages/Workers. SELECT-only validator, BigInt-safe JSON, pluggable auth & rate-limit.",
   "type": "module",
   "license": "MIT",
